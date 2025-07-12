@@ -1043,23 +1043,10 @@ body {
 
 /* 增强烟花光影效果 */
 .poetry-text.show .poetry-line {
-    animation: gradientMove 3s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes textGlow {
-    0% {
-        text-shadow: 
-            0 0 10px rgba(255, 255, 255, 0.8),
-            0 0 20px rgba(255, 255, 255, 0.6),
-            0 0 30px rgba(255, 255, 255, 0.4),
-            2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    100% {
-        text-shadow: 
-            0 0 20px rgba(255, 255, 255, 1),
-            0 0 30px rgba(255, 255, 255, 0.8),
-            0 0 40px rgba(255, 255, 255, 0.6),
-            0 0 50px rgba(255, 107, 107, 0.4),
-            2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
+    animation: gradientMove 3s ease-in-out infinite;
+    text-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.9),
+        0 0 25px rgba(255, 255, 255, 0.7),
+        0 0 35px rgba(255, 255, 255, 0.5),
+        2px 2px 4px rgba(0, 0, 0, 0.5);
 } 
