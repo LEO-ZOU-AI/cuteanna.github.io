@@ -1,0 +1,1065 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(to bottom, 
+        #000428 0%, 
+        #004e92 100%);
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 满天星空 */
+.sky {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60vh;
+    background: linear-gradient(to bottom, 
+        #000428 0%, 
+        #004e92 100%);
+    z-index: 0;
+}
+
+.sky::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #ddd, transparent),
+        radial-gradient(1px 1px at 200px 90px, #fff, transparent),
+        radial-gradient(2px 2px at 240px 50px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 280px 10px, #eee, transparent),
+        radial-gradient(1px 1px at 320px 70px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 360px 40px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 400px 200px;
+    animation: starfield 20s linear infinite;
+}
+
+@keyframes starfield {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-400px); }
+}
+
+/* 真实的海洋 */
+.sea {
+    position: absolute;
+    bottom: 30vh;
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(to bottom, 
+        #1e3a8a 0%, 
+        #1e40af 20%, 
+        #1d4ed8 40%, 
+        #2563eb 60%,
+        #3b82f6 80%,
+        #60a5fa 100%);
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* 多层海浪效果 */
+.sea::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 300%;
+    height: 100px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.1) 10%,
+        rgba(255, 255, 255, 0.3) 20%, 
+        rgba(255, 255, 255, 0.5) 30%,
+        rgba(255, 255, 255, 0.3) 40%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 60%,
+        rgba(255, 255, 255, 0.1) 70%,
+        rgba(255, 255, 255, 0.4) 80%,
+        rgba(255, 255, 255, 0.2) 90%,
+        transparent 100%);
+    animation: wave1 8s ease-in-out infinite;
+    border-radius: 0 0 50% 50%;
+}
+
+.sea::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -100%;
+    width: 300%;
+    height: 80px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.05) 15%,
+        rgba(255, 255, 255, 0.2) 25%, 
+        rgba(255, 255, 255, 0.35) 35%,
+        rgba(255, 255, 255, 0.2) 45%,
+        rgba(255, 255, 255, 0.05) 55%,
+        transparent 65%,
+        rgba(255, 255, 255, 0.15) 75%,
+        rgba(255, 255, 255, 0.25) 85%,
+        rgba(255, 255, 255, 0.1) 95%,
+        transparent 100%);
+    animation: wave2 6s ease-in-out infinite reverse;
+    border-radius: 0 0 40% 40%;
+}
+
+@keyframes wave1 {
+    0%, 100% { transform: translateX(0) rotateZ(0deg); }
+    25% { transform: translateX(-10%) rotateZ(0.5deg); }
+    50% { transform: translateX(-20%) rotateZ(0deg); }
+    75% { transform: translateX(-10%) rotateZ(-0.5deg); }
+}
+
+@keyframes wave2 {
+    0%, 100% { transform: translateX(0) rotateZ(0deg); }
+    33% { transform: translateX(-15%) rotateZ(-0.3deg); }
+    66% { transform: translateX(-25%) rotateZ(0.3deg); }
+}
+
+/* 真实的沙滩 */
+.beach {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30vh;
+    background: linear-gradient(to bottom, 
+        #f4e4bc 0%, 
+        #e6d3a3 20%, 
+        #d4c294 40%, 
+        #c2b185 60%,
+        #b0a076 80%,
+        #9e8f67 100%);
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* 沙滩纹理 */
+.beach::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
+        radial-gradient(circle at 30% 40%, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle at 50% 60%, rgba(255,255,255,0.08) 1px, transparent 1px),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.06) 1px, transparent 1px),
+        radial-gradient(circle at 90% 10%, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 50px 50px, 30px 30px, 40px 40px, 60px 60px, 35px 35px;
+    animation: sandGrain 15s linear infinite;
+}
+
+/* 沙滩边缘的泡沫 */
+.beach::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 20px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.3) 10%,
+        rgba(255, 255, 255, 0.6) 20%, 
+        rgba(255, 255, 255, 0.8) 30%,
+        rgba(255, 255, 255, 0.6) 40%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 60%,
+        rgba(255, 255, 255, 0.4) 70%,
+        rgba(255, 255, 255, 0.7) 80%,
+        rgba(255, 255, 255, 0.5) 90%,
+        transparent 100%);
+    animation: foam 4s ease-in-out infinite;
+    border-radius: 50%;
+}
+
+@keyframes sandGrain {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-10px) translateY(-2px); }
+}
+
+@keyframes foam {
+    0%, 100% { transform: translateX(0) scaleY(1); }
+    50% { transform: translateX(-30px) scaleY(0.8); }
+}
+
+/* 更逼真的人物 */
+.character {
+    position: absolute;
+    bottom: 30vh;
+    z-index: 3;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));
+}
+
+.boy {
+    left: 45%;
+    height: 220px;
+    width: 90px;
+    cursor: pointer;
+    transform: translateX(-45px) scaleX(-1);
+}
+
+.girl {
+    left: 55%;
+    height: 190px;
+    width: 80px;
+    transform: translateX(-40px) scaleX(-1);
+}
+
+/* 更逼真的身体 */
+.body {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 100px;
+    background: linear-gradient(135deg, 
+        #ffffff 0%, 
+        #f8f8f8 25%,
+        #f0f0f0 50%,
+        #e8e8e8 75%,
+        #e0e0e0 100%);
+    border-radius: 12px 12px 6px 6px;
+    box-shadow: 
+        inset -5px 0 10px rgba(0, 0, 0, 0.1),
+        inset 5px 0 10px rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+/* 男生衬衫上的Leo */
+.boy .body::before {
+    content: 'Leo';
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: bold;
+    color: rgba(100, 100, 100, 0.8);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* 男生衬衫纽扣 */
+.boy .body::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 3px;
+    background: radial-gradient(circle, #ddd 0%, #bbb 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 15px 0 rgba(187, 187, 187, 0.8),
+        0 30px 0 rgba(187, 187, 187, 0.8);
+}
+
+.girl .body {
+    background: linear-gradient(135deg, 
+        #2a2a2a 0%, 
+        #1f1f1f 25%,
+        #1a1a1a 50%,
+        #151515 75%,
+        #101010 100%);
+    height: 110px;
+    border-radius: 15px 15px 8px 8px;
+    box-shadow: 
+        inset -5px 0 10px rgba(0, 0, 0, 0.3),
+        inset 5px 0 10px rgba(255, 255, 255, 0.05);
+}
+
+/* 女生衣服上的Anna */
+.girl .body::before {
+    content: 'Anna';
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: bold;
+    color: rgba(200, 200, 200, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* 更逼真的头部 */
+.head {
+    position: absolute;
+    bottom: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 35% 35%, 
+        #ffd1a1 0%, 
+        #e6b885 40%,
+        #d4a574 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 3px 8px rgba(0, 0, 0, 0.3),
+        inset -3px -3px 6px rgba(0, 0, 0, 0.1),
+        inset 3px 3px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* 男生头发 */
+.boy .head::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 20px;
+    background: linear-gradient(135deg, 
+        #8b4513 0%, 
+        #654321 50%, 
+        #4a2c17 100%);
+    border-radius: 18px 18px 8px 8px;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+/* 女生长头发 */
+.girl .head::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 60px;
+    background: linear-gradient(135deg, 
+        #8b4513 0%, 
+        #654321 30%, 
+        #4a2c17 60%,
+        #3d1f0f 100%);
+    border-radius: 22px 22px 15px 15px;
+    box-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.3),
+        inset -2px 0 4px rgba(0, 0, 0, 0.2),
+        inset 2px 0 4px rgba(139, 69, 19, 0.2);
+}
+
+/* 女生面部特征 */
+.girl .head::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 15px;
+    background: 
+        radial-gradient(circle at 6px 5px, #2c2c2c 2px, transparent 2px),
+        radial-gradient(circle at 19px 5px, #2c2c2c 2px, transparent 2px),
+        linear-gradient(to right, transparent 10px, #d4a574 10px, #d4a574 15px, transparent 15px);
+    background-size: 25px 10px, 25px 10px, 25px 3px;
+    background-position: 0 0, 0 0, 0 8px;
+    background-repeat: no-repeat;
+}
+
+/* 更逼真的手臂 */
+.arm {
+    position: absolute;
+    width: 14px;
+    height: 80px;
+    background: linear-gradient(135deg, 
+        #ffd1a1 0%, 
+        #e6b885 50%, 
+        #d4a574 100%);
+    border-radius: 7px;
+    box-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.2),
+        inset -2px 0 4px rgba(0, 0, 0, 0.1),
+        inset 2px 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.left-arm {
+    bottom: 120px;
+    left: 12px;
+    transform: rotate(20deg);
+}
+
+.right-arm {
+    bottom: 120px;
+    right: 12px;
+    transform: rotate(-10deg);
+}
+
+.boy .right-arm {
+    animation: raiseArm 2s ease-in-out infinite alternate;
+}
+
+@keyframes raiseArm {
+    from { transform: rotate(-20deg); }
+    to { transform: rotate(-50deg); }
+}
+
+/* 更逼真的枯枝 */
+.stick {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%) rotate(20deg);
+    width: 8px;
+    height: 100px;
+    background: linear-gradient(135deg, 
+        #8b4513 0%, 
+        #654321 30%, 
+        #4a2c17 60%,
+        #3d1f0f 100%);
+    border-radius: 4px;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset -2px 0 4px rgba(0, 0, 0, 0.2),
+        inset 2px 0 4px rgba(139, 69, 19, 0.3);
+}
+
+.stick::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -4px;
+    width: 6px;
+    height: 35px;
+    background: linear-gradient(135deg, 
+        #8b4513 0%, 
+        #654321 50%, 
+        #4a2c17 100%);
+    border-radius: 3px;
+    transform: rotate(40deg);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        inset -1px 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.stick::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: -4px;
+    width: 6px;
+    height: 30px;
+    background: linear-gradient(135deg, 
+        #8b4513 0%, 
+        #654321 50%, 
+        #4a2c17 100%);
+    border-radius: 3px;
+    transform: rotate(-35deg);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        inset 1px 0 2px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes raiseStick {
+    from { transform: translateX(-50%) rotate(20deg); }
+    to { transform: translateX(-50%) rotate(0deg); }
+}
+
+/* 更逼真的腿部 */
+.leg {
+    position: absolute;
+    width: 20px;
+    height: 80px;
+    background: linear-gradient(135deg, 
+        #1e40af 0%, 
+        #1d4ed8 30%, 
+        #2563eb 60%,
+        #3b82f6 100%);
+    border-radius: 10px;
+    bottom: 0;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        inset -3px 0 6px rgba(0, 0, 0, 0.1),
+        inset 3px 0 6px rgba(59, 130, 246, 0.2);
+}
+
+.boy .leg {
+    width: 32px;
+    background: linear-gradient(135deg, 
+        #3b82f6 0%, 
+        #2563eb 30%, 
+        #1d4ed8 60%,
+        #1e40af 100%);
+    border-radius: 16px;
+}
+
+/* 牛仔裤细节 */
+.leg::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.1) 100%);
+}
+
+.left-leg {
+    left: 12px;
+}
+
+.right-leg {
+    right: 12px;
+}
+
+/* 朋友们（更模糊的背景人物） */
+.friends {
+    position: absolute;
+    bottom: 30vh;
+    z-index: 2;
+    opacity: 0.4;
+}
+
+.friend {
+    position: absolute;
+    width: 60px;
+    height: 160px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        rgba(200, 200, 200, 0.6) 100%);
+    border-radius: 15px;
+    filter: blur(2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.friend-1 {
+    left: 15%;
+    height: 180px;
+    background: linear-gradient(135deg, 
+        rgba(255, 200, 200, 0.6) 0%, 
+        rgba(200, 150, 150, 0.6) 100%);
+}
+
+.friend-2 {
+    left: 25%;
+    height: 170px;
+    background: linear-gradient(135deg, 
+        rgba(200, 255, 200, 0.6) 0%, 
+        rgba(150, 200, 150, 0.6) 100%);
+}
+
+.friend-3 {
+    right: 15%;
+    height: 185px;
+    background: linear-gradient(135deg, 
+        rgba(200, 200, 255, 0.6) 0%, 
+        rgba(150, 150, 200, 0.6) 100%);
+}
+
+/* 更逼真的烧烤 */
+.bbq {
+    position: absolute;
+    bottom: 30vh;
+    left: 70%;
+    width: 140px;
+    height: 50px;
+    background: linear-gradient(135deg, 
+        #2d2d2d 0%, 
+        #1a1a1a 50%,
+        #0d0d0d 100%);
+    border-radius: 10px;
+    z-index: 2;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.bbq::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 25px;
+    width: 90px;
+    height: 12px;
+    background: linear-gradient(90deg, 
+        #ff6b6b 0%, 
+        #ff8e53 15%, 
+        #ffa726 30%,
+        #ff6b6b 45%, 
+        #ff8e53 60%,
+        #ffa726 75%,
+        #ff6b6b 100%);
+    border-radius: 6px;
+    animation: fire 1s infinite alternate;
+    box-shadow: 
+        0 0 30px rgba(255, 107, 107, 0.8),
+        0 0 60px rgba(255, 107, 107, 0.4);
+}
+
+.bbq::after {
+    content: '';
+    position: absolute;
+    top: -25px;
+    left: 40px;
+    width: 60px;
+    height: 20px;
+    background: linear-gradient(to top, 
+        transparent 0%, 
+        rgba(100, 100, 100, 0.2) 30%,
+        rgba(150, 150, 150, 0.1) 60%,
+        rgba(200, 200, 200, 0.05) 100%);
+    border-radius: 50%;
+    animation: smoke 3s infinite linear;
+}
+
+@keyframes fire {
+    0% {
+        opacity: 0.8;
+        transform: scaleY(0.9) scaleX(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1.1) scaleX(1.05);
+    }
+}
+
+@keyframes smoke {
+    0% {
+        opacity: 0.3;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(1.8) rotate(10deg);
+    }
+}
+
+/* 烟花容器 */
+.fireworks-container {
+    position: absolute;
+    width: 100%;
+    height: 60vh;
+    top: 0;
+    z-index: 1;
+}
+
+/* 更逼真的烟花 */
+.firework-rocket {
+    position: absolute;
+    width: 5px;
+    height: 25px;
+    background: linear-gradient(to top, 
+        #ffff00 0%, 
+        #ff8c00 50%,
+        #ff6b6b 100%);
+    border-radius: 3px;
+    z-index: 1;
+    box-shadow: 
+        0 0 15px rgba(255, 255, 0, 0.9),
+        0 0 30px rgba(255, 255, 0, 0.5);
+}
+
+.firework-explosion {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform-origin: center;
+    animation: explode 3s forwards;
+}
+
+@keyframes riseUp {
+    0% {
+        bottom: 70vh;
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(255, 255, 0, 0.9);
+    }
+    100% {
+        bottom: 90vh;
+        top: 3vh;
+        opacity: 0.95;
+        box-shadow: 0 0 25px rgba(255, 255, 0, 0.6);
+    }
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+        box-shadow: 0 0 30px currentColor;
+    }
+    30% {
+        transform: scale(12);
+        opacity: 0.9;
+        box-shadow: 0 0 80px currentColor;
+    }
+    100% {
+        transform: scale(30);
+        opacity: 0;
+        box-shadow: 0 0 150px currentColor;
+    }
+}
+
+/* 更逼真的粒子 */
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    animation: particle 2.5s forwards;
+    box-shadow: 0 0 8px currentColor;
+}
+
+@keyframes particle {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+        box-shadow: 0 0 8px currentColor;
+    }
+    100% {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+        box-shadow: 0 0 3px currentColor;
+    }
+}
+
+/* 第一人称视角 */
+.first-person-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0, 4, 40, 0.95) 0%, 
+        rgba(0, 78, 146, 0.95) 100%);
+    z-index: 10;
+    display: none;
+    perspective: 1000px;
+}
+
+.stick-view {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 500px;
+}
+
+.stick-branches {
+    position: relative;
+    width: 15px;
+    height: 300px;
+    background: linear-gradient(135deg, 
+        #8b4513 0%, 
+        #654321 30%, 
+        #4a2c17 60%,
+        #3d1f0f 100%);
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 
+        0 0 30px rgba(0, 0, 0, 0.6),
+        inset -3px 0 6px rgba(0, 0, 0, 0.3),
+        inset 3px 0 6px rgba(139, 69, 19, 0.2);
+}
+
+.stick-branches::before,
+.stick-branches::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: 12px;
+    height: 150px;
+    background: linear-gradient(135deg, 
+        #8b4513 0%, 
+        #654321 50%, 
+        #4a2c17 100%);
+    border-radius: 6px;
+    box-shadow: 
+        0 0 15px rgba(0, 0, 0, 0.4),
+        inset -2px 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.stick-branches::before {
+    left: -30px;
+    transform: rotate(-40deg);
+}
+
+.stick-branches::after {
+    right: -30px;
+    transform: rotate(40deg);
+}
+
+.fireworks-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.back-button {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 40px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    cursor: pointer;
+    z-index: 11;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+}
+
+.back-button:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.25) 0%, 
+        rgba(255, 255, 255, 0.15) 100%);
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.message {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    z-index: 5;
+    width: 90%;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.2) 0%, 
+        rgba(0, 0, 0, 0.05) 100%);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.message h1 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.message p {
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 烟花光影形成的"叶子"效果 */
+.leaf-shadow {
+    position: absolute;
+    width: 25px;
+    height: 40px;
+    background: none;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    z-index: 2;
+    transition: all 3s;
+    opacity: 0;
+}
+
+.illuminated .leaf-shadow {
+    opacity: 1;
+    box-shadow: 
+        inset 0 0 20px rgba(34, 197, 94, 0.8),
+        0 0 30px rgba(34, 197, 94, 0.6),
+        0 0 50px rgba(34, 197, 94, 0.4);
+    animation: leafGlow 2s infinite alternate;
+}
+
+@keyframes leafGlow {
+    0% {
+        box-shadow: 
+            inset 0 0 15px rgba(34, 197, 94, 0.6),
+            0 0 25px rgba(34, 197, 94, 0.4),
+            0 0 40px rgba(34, 197, 94, 0.2);
+    }
+    100% {
+        box-shadow: 
+            inset 0 0 25px rgba(34, 197, 94, 1),
+            0 0 40px rgba(34, 197, 94, 0.8),
+            0 0 60px rgba(34, 197, 94, 0.6);
+    }
+}
+
+/* 音乐控制 */
+.music-control {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.music-control:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.25) 0%, 
+        rgba(255, 255, 255, 0.15) 100%);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.music-icon {
+    font-size: 28px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    animation: rotate 5s linear infinite paused;
+}
+
+.playing .music-icon {
+    animation-play-state: running;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 诗句文字动画效果 */
+.poetry-text {
+    position: absolute;
+    bottom: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.poetry-line {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 10px 0;
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+    transition: all 0.8s ease-out;
+    background: linear-gradient(45deg, 
+        #ff6b6b, 
+        #ffa726, 
+        #ffeb3b, 
+        #4caf50, 
+        #2196f3, 
+        #9c27b0);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientMove 3s ease-in-out infinite;
+}
+
+.poetry-text.show {
+    opacity: 1;
+}
+
+.poetry-text.show .poetry-line {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.poetry-text.show .poetry-line:nth-child(1) {
+    transition-delay: 0.5s;
+}
+
+.poetry-text.show .poetry-line:nth-child(2) {
+    transition-delay: 1.2s;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 增强烟花光影效果 */
+.poetry-text.show .poetry-line {
+    animation: gradientMove 3s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 
+            0 0 10px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(255, 255, 255, 0.6),
+            0 0 30px rgba(255, 255, 255, 0.4),
+            2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        text-shadow: 
+            0 0 20px rgba(255, 255, 255, 1),
+            0 0 30px rgba(255, 255, 255, 0.8),
+            0 0 40px rgba(255, 255, 255, 0.6),
+            0 0 50px rgba(255, 107, 107, 0.4),
+            2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+} 
